@@ -53,7 +53,7 @@ export function Header() {
             <Link
               key={it.to}
               to={it.to}
-              params={{ lang }}
+              params={{ lang } as any}
               activeOptions={{ exact: it.exact }}
               activeProps={{ className: "text-accent" }}
               inactiveProps={{ className: "text-muted-foreground hover:text-primary" }}
@@ -99,7 +99,7 @@ export function Header() {
               <Link
                 key={it.to}
                 to={it.to}
-                params={{ lang }}
+                params={{ lang } as any}
                 onClick={() => setOpen(false)}
                 className="text-sm font-medium text-primary py-1.5"
               >
