@@ -17,6 +17,7 @@ import {
   Globe2,
   ChevronRight,
   Quote,
+  Linkedin,
 } from "lucide-react";
 
 export const Route = createFileRoute("/$lang/")({
@@ -54,16 +55,20 @@ function Home() {
       {/* Hero */}
       <section className="relative hero-gradient text-white overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]" aria-hidden style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        <div className="container-page relative py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 fade-up">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-accent-foreground/90 mb-6">
+        {/* Animated blobs */}
+        <div aria-hidden className="absolute -top-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/30 blob" />
+        <div aria-hidden className="absolute top-1/3 -right-32 h-[32rem] w-[32rem] rounded-full bg-indigo-500/20 blob" style={{ animationDelay: "3s" }} />
+        <div aria-hidden className="absolute bottom-0 left-1/3 h-[20rem] w-[20rem] rounded-full bg-sky-400/15 blob" style={{ animationDelay: "6s" }} />
+        <div className="container-page relative pt-32 md:pt-40 pb-24 md:pb-32 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-accent-foreground/90 mb-6 fade-up">
               <span className="h-px w-8 bg-white/40" /> {t.home.tagline}
             </div>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-balance">
-              {t.home.hero_title}
+            <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-balance fade-up delay-100">
+              <span className="shimmer-text">{t.home.hero_title}</span>
             </h1>
-            <p className="mt-6 text-lg text-white/75 max-w-2xl leading-relaxed">{t.home.hero_sub}</p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <p className="mt-6 text-lg text-white/75 max-w-2xl leading-relaxed fade-up delay-200">{t.home.hero_sub}</p>
+            <div className="mt-10 flex flex-wrap gap-3 fade-up delay-300">
               <Link to="/$lang/contact" params={{ lang } as any}>
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-elegant">
                   {t.cta.quote} <ArrowRight size={16} className="ml-1" />
@@ -76,10 +81,10 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="lg:col-span-5 hidden lg:block">
+          <div className="lg:col-span-5 hidden lg:block fade-up delay-400">
             <div className="relative">
-              <div className="absolute -inset-6 bg-accent/20 rounded-3xl blur-2xl" />
-              <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur p-8 shadow-elegant">
+              <div className="absolute -inset-6 bg-accent/20 rounded-3xl blur-2xl float-slow" />
+              <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur p-8 shadow-elegant float-slow">
                 <div className="grid grid-cols-2 gap-4">
                   {t.home.stats.map((s) => (
                     <div key={s.l} className="p-4 rounded-lg bg-white/[0.03] border border-white/5">
@@ -240,6 +245,38 @@ function Home() {
                 <figcaption className="mt-5 text-sm text-muted-foreground border-t border-border pt-4">{ti.a}</figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="section-y bg-secondary/40">
+        <div className="container-page">
+          <SectionTitle eyebrow={lang === "fr" ? "Équipe" : "Team"} title={t.home.team_title} subtitle={t.home.team_sub} />
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.home.team.map((m) => {
+              const initials = m.n.split(" ").map((p) => p[0]).slice(0, 2).join("");
+              return (
+                <div
+                  key={m.n}
+                  className="group p-6 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all"
+                >
+                  <div className="h-20 w-20 rounded-full hero-gradient text-white grid place-items-center text-xl font-semibold mb-5 shadow-elegant">
+                    {initials}
+                  </div>
+                  <h3 className="font-semibold text-primary">{m.n}</h3>
+                  <div className="text-xs uppercase tracking-wider text-accent mt-1 font-semibold">{m.r}</div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.b}</p>
+                  <a
+                    href="#"
+                    aria-label={`LinkedIn ${m.n}`}
+                    className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+                  >
+                    <Linkedin size={14} />
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

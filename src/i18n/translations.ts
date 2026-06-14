@@ -80,6 +80,14 @@ export const translations = {
       ],
       final_cta_title: "Prêt à donner une nouvelle vision à vos systèmes ?",
       final_cta_sub: "Échangeons sur votre projet. Réponse sous 48h, sans engagement.",
+      team_title: "L'équipe Ogensys",
+      team_sub: "Des dirigeants expérimentés et des experts passionnés au service de vos projets.",
+      team: [
+        { n: "Amine Bensaïd", r: "CEO & Fondateur", b: "20 ans d'expérience en architecture SI et transformation digitale, ex-directeur de practice dans un cabinet international." },
+        { n: "Hery Rakoto", r: "Directeur Delivery", b: "Pilote le delivery center et garantit la qualité des livrables sur l'ensemble des projets offshore." },
+        { n: "Claire Lefèvre", r: "Directrice Conseil", b: "Spécialiste de la stratégie SI et de la conduite du changement pour les grands comptes européens." },
+        { n: "Yann Moreau", r: "CTO", b: "Architecte logiciel, expert Java, .Net et cloud, garant des standards techniques d'Ogensys." },
+      ],
     },
     expertises: {
       title: "Nos expertises",
@@ -308,6 +316,14 @@ export const translations = {
       ],
       final_cta_title: "Ready to give a new vision to your systems?",
       final_cta_sub: "Let's talk about your project. Reply within 48 hours, no strings attached.",
+      team_title: "The Ogensys team",
+      team_sub: "Seasoned leaders and passionate experts dedicated to your projects.",
+      team: [
+        { n: "Amine Bensaïd", r: "CEO & Founder", b: "20 years in IT architecture and digital transformation, former practice director in an international firm." },
+        { n: "Hery Rakoto", r: "Delivery Director", b: "Leads the delivery center and ensures the quality of every offshore deliverable." },
+        { n: "Claire Lefèvre", r: "Consulting Director", b: "Expert in IT strategy and change management for European enterprise accounts." },
+        { n: "Yann Moreau", r: "CTO", b: "Software architect, Java, .Net and cloud expert, guardian of Ogensys technical standards." },
+      ],
     },
     expertises: {
       title: "Our expertise",
