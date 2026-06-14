@@ -38,16 +38,21 @@ export function Header() {
     { to: "/$lang/about", label: t.nav.about },
   ];
 
+  const isHome = /^\/(fr|en)\/?$/.test(loc.pathname);
+  const transparent = isHome && !scrolled;
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-white/70 backdrop-blur"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        transparent
+          ? "bg-transparent border-b border-transparent"
+          : scrolled
+          ? "bg-white/85 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-white/75 backdrop-blur border-b border-transparent"
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <Logo />
+        <Logo light={transparent} />
         <nav className="hidden lg:flex items-center gap-7">
           {items.map((it) => (
             <Link
@@ -55,8 +60,12 @@ export function Header() {
               to={it.to}
               params={{ lang } as any}
               activeOptions={{ exact: it.exact }}
-              activeProps={{ className: "text-accent" }}
-              inactiveProps={{ className: "text-muted-foreground hover:text-primary" }}
+              activeProps={{ className: transparent ? "text-white" : "text-accent" }}
+              inactiveProps={{
+                className: transparent
+                  ? "text-white/80 hover:text-white"
+                  : "text-muted-foreground hover:text-primary",
+              }}
               className="text-sm font-medium transition-colors"
             >
               {it.label}
@@ -64,13 +73,19 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center text-xs font-semibold rounded-md border border-border overflow-hidden">
+          <div className={`hidden md:flex items-center text-xs font-semibold rounded-md border overflow-hidden ${transparent ? "border-white/30" : "border-border"}`}>
             {(["fr", "en"] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => switchLang(l)}
                 className={`px-2.5 py-1 transition-colors ${
-                  lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-secondary"
+                  lang === l
+                    ? transparent
+                      ? "bg-white text-primary"
+                      : "bg-primary text-primary-foreground"
+                    : transparent
+                    ? "text-white/80 hover:bg-white/10"
+                    : "text-muted-foreground hover:bg-secondary"
                 }`}
                 aria-label={`Switch to ${l.toUpperCase()}`}
               >
@@ -79,12 +94,18 @@ export function Header() {
             ))}
           </div>
           <Link to="/$lang/contact" params={{ lang }} className="hidden sm:block">
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm">
+            <Button
+              className={
+                transparent
+                  ? "bg-white text-primary hover:bg-white/90 shadow-sm"
+                  : "bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm"
+              }
+            >
               {t.cta.quote}
             </Button>
           </Link>
           <button
-            className="lg:hidden p-2 text-primary"
+            className={`lg:hidden p-2 ${transparent ? "text-white" : "text-primary"}`}
             onClick={() => setOpen((o) => !o)}
             aria-label="Menu"
           >
