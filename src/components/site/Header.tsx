@@ -30,13 +30,13 @@ export function Header() {
     setOpen(false);
   };
 
-  const items = [
+  const items: { to: any; label: string; exact?: boolean }[] = [
     { to: "/$lang", label: t.nav.home, exact: true },
     { to: "/$lang/expertises", label: t.nav.expertises },
     { to: "/$lang/collaboration", label: t.nav.collaboration },
     { to: "/$lang/realisations", label: t.nav.work },
     { to: "/$lang/about", label: t.nav.about },
-  ] as const;
+  ];
 
   return (
     <header
