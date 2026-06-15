@@ -52,7 +52,7 @@ export function Header() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between">
-        <Logo light={transparent} />
+        <Logo light={transparent} large={transparent} />
         <nav className="hidden lg:flex items-center gap-7">
           {items.map((it) => (
             <Link
