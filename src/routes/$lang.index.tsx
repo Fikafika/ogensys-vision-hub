@@ -19,6 +19,10 @@ import {
   Quote,
   Linkedin,
 } from "lucide-react";
+import teamAmine from "@/assets/team-amine.jpg";
+import teamHery from "@/assets/team-hery.jpg";
+import teamClaire from "@/assets/team-claire.jpg";
+import teamYann from "@/assets/team-yann.jpg";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
@@ -45,6 +49,8 @@ const EXP_ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrenc
 const MODEL_ICONS = [Globe2, ShieldCheck, Users, Wrench];
 
 const TECHS = ["Java", "PHP", ".Net", "React", "Vue", "Angular", "Odoo", "Android", "iOS", "ERP", "Business Intelligence"];
+
+const TEAM_PORTRAITS = [teamAmine, teamHery, teamClaire, teamYann];
 
 function Home() {
   const lang = useLang();
@@ -254,29 +260,36 @@ function Home() {
         <div className="container-page">
           <SectionTitle eyebrow={lang === "fr" ? "Équipe" : "Team"} title={t.home.team_title} subtitle={t.home.team_sub} />
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.home.team.map((m) => {
-              const initials = m.n.split(" ").map((p) => p[0]).slice(0, 2).join("");
-              return (
-                <div
-                  key={m.n}
-                  className="group p-6 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all"
-                >
-                  <div className="h-20 w-20 rounded-full hero-gradient text-white grid place-items-center text-xl font-semibold mb-5 shadow-elegant">
-                    {initials}
-                  </div>
-                  <h3 className="font-semibold text-primary">{m.n}</h3>
-                  <div className="text-xs uppercase tracking-wider text-accent mt-1 font-semibold">{m.r}</div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.b}</p>
+            {t.home.team.map((m, i) => (
+              <div
+                key={m.n}
+                className="group rounded-xl overflow-hidden bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
+                  <img
+                    src={TEAM_PORTRAITS[i]}
+                    alt={`${m.n} — ${m.r}`}
+                    width={768}
+                    height={960}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <a
                     href="#"
                     aria-label={`LinkedIn ${m.n}`}
-                    className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground hover:text-accent hover:border-accent transition-colors"
+                    className="absolute bottom-3 right-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/90 backdrop-blur text-primary hover:bg-accent hover:text-white transition-colors opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300"
                   >
-                    <Linkedin size={14} />
+                    <Linkedin size={15} />
                   </a>
                 </div>
-              );
-            })}
+                <div className="p-5">
+                  <h3 className="font-semibold text-primary">{m.n}</h3>
+                  <div className="text-xs uppercase tracking-wider text-accent mt-1 font-semibold">{m.r}</div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.b}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
