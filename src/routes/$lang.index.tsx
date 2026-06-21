@@ -18,6 +18,14 @@ import {
   ChevronRight,
   Quote,
   Linkedin,
+  Coffee,
+  Atom,
+  Triangle,
+  Shield,
+  Package,
+  Apple,
+  Hash,
+  Building2,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
@@ -48,7 +56,19 @@ const PILLAR_ICONS = [Compass, Wallet, Users, ShieldCheck];
 const EXP_ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrench];
 const MODEL_ICONS = [Globe2, ShieldCheck, Users, Wrench];
 
-const TECHS = ["Java", "PHP", ".Net", "React", "Vue", "Angular", "Odoo", "Android", "iOS", "ERP", "Business Intelligence"];
+const TECHS: { name: string; Icon: typeof Code2 }[] = [
+  { name: "Java", Icon: Coffee },
+  { name: "PHP", Icon: Code2 },
+  { name: ".Net", Icon: Hash },
+  { name: "React", Icon: Atom },
+  { name: "Vue", Icon: Triangle },
+  { name: "Angular", Icon: Shield },
+  { name: "Odoo", Icon: Package },
+  { name: "Android", Icon: Smartphone },
+  { name: "iOS", Icon: Apple },
+  { name: "ERP", Icon: Boxes },
+  { name: "Business Intelligence", Icon: BarChart3 },
+];
 
 const TEAM_PORTRAITS = [teamAmine, teamHery, teamClaire, teamYann];
 
@@ -102,13 +122,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Logos / trust strip */}
-      <section className="border-y border-border bg-secondary/40">
-        <div className="container-page py-6 flex flex-wrap items-center justify-between gap-x-10 gap-y-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          <span>Banque</span><span>Industrie</span><span>Retail</span><span>Énergie</span><span>Télécom</span><span>Assurance</span><span>Public</span>
         </div>
       </section>
 
@@ -167,12 +180,13 @@ function Home() {
         <div className="container-page">
           <SectionTitle eyebrow="Stack" title={t.home.tech_title} subtitle={t.home.tech_sub} />
           <div className="mt-12 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {TECHS.map((tech) => (
+            {TECHS.map(({ name, Icon }) => (
               <span
-                key={tech}
-                className="px-4 py-2 rounded-md bg-card border border-border text-sm font-medium text-primary shadow-sm hover:border-accent hover:text-accent transition-colors"
+                key={name}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-card border border-border text-sm font-medium text-primary shadow-sm hover:border-accent hover:text-accent transition-colors"
               >
-                {tech}
+                <Icon size={16} className="text-accent" aria-hidden />
+                {name}
               </span>
             ))}
           </div>
@@ -233,6 +247,30 @@ function Home() {
               <div key={s.l} className="text-center p-8 rounded-xl bg-card border border-border">
                 <div className="text-5xl font-semibold text-accent">{s.v}</div>
                 <div className="mt-2 text-sm text-muted-foreground uppercase tracking-wider">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clients */}
+      <section className="section-y">
+        <div className="container-page">
+          <SectionTitle
+            eyebrow={lang === "fr" ? "Clients" : "Clients"}
+            title={t.home.clients_title}
+            subtitle={t.home.clients_sub}
+          />
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden border border-border">
+            {t.home.clients.map((c) => (
+              <div
+                key={c}
+                className="bg-card hover:bg-secondary/60 transition-colors flex items-center justify-center gap-2 px-4 py-8 grayscale hover:grayscale-0"
+              >
+                <Building2 size={18} className="text-muted-foreground" aria-hidden />
+                <span className="text-sm font-semibold tracking-wide text-primary uppercase">
+                  {c}
+                </span>
               </div>
             ))}
           </div>
