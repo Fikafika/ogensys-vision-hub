@@ -25,7 +25,6 @@ import {
   Package,
   Apple,
   Hash,
-  Building2,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
