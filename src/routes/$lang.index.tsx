@@ -243,27 +243,47 @@ function Home() {
       <section className="section-y bg-secondary/40">
         <div className="container-page">
           <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.expertises.list.map((e, i) => {
-              const Icon = EXP_ICONS[i] || Boxes;
-              return (
-                <Link
-                  key={e.t}
-                  to="/$lang/expertises"
-                  params={{ lang } as any}
-                  className="group p-6 rounded-xl bg-card border border-border hover:border-accent hover:shadow-card transition-all"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="h-10 w-10 rounded-md bg-accent/10 text-accent grid place-items-center">
+          <div className="mt-14 grid lg:grid-cols-12 gap-12 items-stretch">
+            {/* Left column: List of expertises */}
+            <div className="lg:col-span-7 flex flex-col gap-4">
+              {t.expertises.list.map((e, i) => {
+                const Icon = EXP_ICONS[i] || Boxes;
+                return (
+                  <Link
+                    key={e.t}
+                    to="/$lang/expertises"
+                    params={{ lang } as any}
+                    className="group flex items-start gap-5 p-5 rounded-xl bg-card border border-border hover:border-accent hover:shadow-card transition-all"
+                  >
+                    <div className="h-10 w-10 shrink-0 rounded-md bg-accent/10 text-accent grid place-items-center mt-0.5 group-hover:bg-accent group-hover:text-white transition-colors">
                       <Icon size={18} />
                     </div>
-                    <ChevronRight size={16} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 transition-all" />
-                  </div>
-                  <h3 className="font-semibold text-primary mb-2">{e.t}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">{e.d}</p>
-                </Link>
-              );
-            })}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold text-primary group-hover:text-accent transition-colors truncate text-base">{e.t}</h3>
+                        <ChevronRight size={14} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2 leading-relaxed">{e.d}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Right column: Image illustration */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <div className="relative w-full h-full min-h-[300px] lg:min-h-0 rounded-2xl overflow-hidden border border-border bg-card shadow-elegant group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent mix-blend-overlay z-10" />
+                <img
+                  src={expertiseIllustration}
+                  alt={lang === "fr" ? "Domaines d'expertise d'Ogensys" : "Ogensys areas of expertise"}
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -311,22 +331,6 @@ function Home() {
                 </Link>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="section-y">
-        <div className="container-page">
-          <SectionTitle eyebrow="Méthodologie" title={t.home.process_title} subtitle={t.home.process_sub} />
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            {t.home.process_steps.map((s) => (
-              <div key={s.n} className="relative p-6 rounded-xl bg-card border border-border">
-                <div className="text-5xl font-semibold text-accent/20 leading-none">{s.n}</div>
-                <h3 className="mt-4 font-semibold text-primary">{s.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
