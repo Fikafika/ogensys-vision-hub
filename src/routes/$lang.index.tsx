@@ -25,7 +25,6 @@ import {
   Package,
   Apple,
   Hash,
-  Building2,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
@@ -71,6 +70,99 @@ const TECHS: { name: string; Icon: typeof Code2 }[] = [
 ];
 
 const TEAM_PORTRAITS = [teamAmine, teamHery, teamClaire, teamYann];
+
+type ClientLogo = { name: string; color: string; mark: React.ReactNode };
+const CLIENT_LOGOS: ClientLogo[] = [
+  {
+    name: "AXIOM Bank",
+    color: "#0B5FFF",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none">
+        <path d="M4 26 L16 6 L28 26 Z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M10 20 H22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "NovaRetail",
+    color: "#E11D48",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none">
+        <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="2.5" />
+        <circle cx="16" cy="16" r="3" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    name: "Helios Energy",
+    color: "#F59E0B",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        <circle cx="16" cy="16" r="5" fill="currentColor" stroke="none" />
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
+          <line
+            key={a}
+            x1={16 + Math.cos((a * Math.PI) / 180) * 9}
+            y1={16 + Math.sin((a * Math.PI) / 180) * 9}
+            x2={16 + Math.cos((a * Math.PI) / 180) * 13}
+            y2={16 + Math.sin((a * Math.PI) / 180) * 13}
+          />
+        ))}
+      </svg>
+    ),
+  },
+  {
+    name: "Velora Telecom",
+    color: "#7C3AED",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        <path d="M6 22 Q11 14 16 22" />
+        <path d="M4 26 Q11 12 18 26" opacity="0.6" />
+        <circle cx="24" cy="10" r="2.5" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    name: "Meridian Group",
+    color: "#0F766E",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <circle cx="16" cy="16" r="11" />
+        <path d="M5 16 H27" />
+        <path d="M16 5 Q22 16 16 27 Q10 16 16 5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Altius Insurance",
+    color: "#1E3A8A",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round">
+        <path d="M16 4 L26 9 V18 Q26 24 16 28 Q6 24 6 18 V9 Z" />
+        <path d="M12 16 L15 19 L21 12" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Solaria",
+    color: "#EA580C",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round">
+        <path d="M16 4 L19 13 L28 13 L21 19 L24 28 L16 22 L8 28 L11 19 L4 13 L13 13 Z" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    name: "Kairos Industries",
+    color: "#374151",
+    mark: (
+      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="6" width="20" height="20" rx="2" />
+        <path d="M6 16 L16 6 L26 16 L16 26 Z" />
+      </svg>
+    ),
+  },
+];
 
 function Home() {
   const lang = useLang();
@@ -262,14 +354,22 @@ function Home() {
             subtitle={t.home.clients_sub}
           />
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden border border-border">
-            {t.home.clients.map((c) => (
+            {CLIENT_LOGOS.map((c) => (
               <div
-                key={c}
-                className="bg-card hover:bg-secondary/60 transition-colors flex items-center justify-center gap-2 px-4 py-8 grayscale hover:grayscale-0"
+                key={c.name}
+                className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center gap-3 px-4 py-10"
               >
-                <Building2 size={18} className="text-muted-foreground" aria-hidden />
-                <span className="text-sm font-semibold tracking-wide text-primary uppercase">
-                  {c}
+                <span
+                  className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)]"
+                  style={{ ["--brand" as any]: c.color }}
+                  aria-hidden
+                >
+                  {c.mark}
+                </span>
+                <span
+                  className="text-sm font-semibold tracking-wide uppercase text-muted-foreground transition-colors duration-300 group-hover:text-primary"
+                >
+                  {c.name}
                 </span>
               </div>
             ))}
