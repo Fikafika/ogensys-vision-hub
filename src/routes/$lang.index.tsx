@@ -30,6 +30,7 @@ import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
 import teamClaire from "@/assets/team-claire.jpg";
 import teamYann from "@/assets/team-yann.jpg";
+import expertiseIllustration from "@/assets/expertise-illustration.jpg";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
