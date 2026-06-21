@@ -80,6 +80,9 @@ export const translations = {
       ],
       final_cta_title: "Prêt à donner une nouvelle vision à vos systèmes ?",
       final_cta_sub: "Échangeons sur votre projet. Réponse sous 48h, sans engagement.",
+      clients_title: "Et tout ça, grâce à eux",
+      clients_sub: "Une sélection de clients qui nous font confiance, en Europe et en Afrique.",
+      clients: ["AXIOM Bank", "NovaRetail", "Helios Energy", "Velora Telecom", "Meridian Group", "Altius Insurance", "Solaria", "Kairos Industries"],
       team_title: "L'équipe Ogensys",
       team_sub: "Des dirigeants expérimentés et des experts passionnés au service de vos projets.",
       team: [
@@ -316,6 +319,9 @@ export const translations = {
       ],
       final_cta_title: "Ready to give a new vision to your systems?",
       final_cta_sub: "Let's talk about your project. Reply within 48 hours, no strings attached.",
+      clients_title: "And all of this, thanks to them",
+      clients_sub: "A selection of clients who trust us, across Europe and Africa.",
+      clients: ["AXIOM Bank", "NovaRetail", "Helios Energy", "Velora Telecom", "Meridian Group", "Altius Insurance", "Solaria", "Kairos Industries"],
       team_title: "The Ogensys team",
       team_sub: "Seasoned leaders and passionate experts dedicated to your projects.",
       team: [
