@@ -32,6 +32,8 @@ import teamClaire from "@/assets/team-claire.jpg";
 import teamYann from "@/assets/team-yann.jpg";
 import expertiseIllustration from "@/assets/expertise-illustration.jpg";
 import expertiseCollaboration from "@/assets/expertise-collaboration.jpg";
+import { Reveal } from "@/components/site/Reveal";
+import { HeroConstellation } from "@/components/site/HeroConstellation";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
@@ -203,15 +205,33 @@ function Home() {
           </div>
           <div className="lg:col-span-5 hidden lg:block fade-up delay-400">
             <div className="relative">
-              <div className="absolute -inset-6 bg-accent/20 rounded-3xl blur-2xl float-slow" />
-              <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur p-8 shadow-elegant float-slow">
-                <div className="grid grid-cols-2 gap-4">
-                  {t.home.stats.map((s) => (
-                    <div key={s.l} className="p-4 rounded-lg bg-white/[0.03] border border-white/5">
-                      <div className="text-3xl font-semibold text-white">{s.v}</div>
-                      <div className="text-xs text-white/60 mt-1 uppercase tracking-wider">{s.l}</div>
-                    </div>
-                  ))}
+              <div className="absolute -inset-6 bg-accent/20 rounded-3xl blur-2xl float-slow" aria-hidden />
+              <div className="relative aspect-square">
+                <HeroConstellation />
+              </div>
+              <div className="relative -mt-6 rounded-xl border border-white/10 bg-[#0b1224]/70 backdrop-blur px-4 py-3 shadow-elegant font-mono text-[12px] text-white/80 float-slow">
+                <div className="flex items-center gap-1.5 mb-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
+                </div>
+                <div className="text-white/50">// ogensys.io — build</div>
+                <div>
+                  <span className="text-sky-300">const</span>{" "}
+                  <span className="text-white">project</span> ={" "}
+                  <span className="text-emerald-300">await</span>{" "}
+                  <span className="text-amber-200">deliver</span>(
+                </div>
+                <div className="pl-3">
+                  {"{ "}
+                  <span className="text-emerald-300">scope</span>:{" "}
+                  <span className="text-amber-200">"sur-mesure"</span>,{" "}
+                  <span className="text-emerald-300">delay</span>:{" "}
+                  <span className="text-amber-200">"&lt; 90j"</span>
+                  {" }"}
+                </div>
+                <div>
+                  ); <span className="caret" aria-hidden />
                 </div>
               </div>
             </div>
@@ -222,18 +242,22 @@ function Home() {
       {/* Why */}
       <section className="section-y">
         <div className="container-page">
-          <SectionTitle eyebrow="Ogensys" title={t.home.why_title} subtitle={t.home.why_sub} />
+          <Reveal>
+            <SectionTitle eyebrow="Ogensys" title={t.home.why_title} subtitle={t.home.why_sub} />
+          </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.home.pillars.map((p, i) => {
               const Icon = PILLAR_ICONS[i];
               return (
-                <div key={p.title} className="group p-7 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all">
-                  <div className="h-11 w-11 rounded-md bg-primary/5 text-accent grid place-items-center mb-5 group-hover:bg-accent group-hover:text-white transition-colors">
-                    <Icon size={20} />
+                <Reveal key={p.title} delay={i * 90}>
+                  <div className="group p-7 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all h-full">
+                    <div className="h-11 w-11 rounded-md bg-primary/5 text-accent grid place-items-center mb-5 group-hover:bg-accent group-hover:text-white transition-colors">
+                      <Icon size={20} />
+                    </div>
+                    <h3 className="font-semibold text-primary text-lg mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
-                  <h3 className="font-semibold text-primary text-lg mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -243,10 +267,12 @@ function Home() {
       {/* Expertises preview */}
       <section className="section-y bg-secondary/40">
         <div className="container-page">
-          <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
+          <Reveal>
+            <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
+          </Reveal>
           <div className="mt-12 grid lg:grid-cols-12 gap-10 items-center">
             {/* Left column: compact list */}
-            <ul className="lg:col-span-7 divide-y divide-border rounded-xl border border-border bg-card overflow-hidden">
+            <Reveal as="ul" className="lg:col-span-7 divide-y divide-border rounded-xl border border-border bg-card overflow-hidden">
               {t.expertises.list.map((e, i) => {
                 const Icon = EXP_ICONS[i] || Boxes;
                 return (
@@ -265,10 +291,10 @@ function Home() {
                   </li>
                 );
               })}
-            </ul>
+            </Reveal>
 
             {/* Right column: collaboration image */}
-            <div className="lg:col-span-5">
+            <Reveal className="lg:col-span-5" delay={150}>
               <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-elegant group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent mix-blend-overlay z-10" />
                 <img
@@ -280,7 +306,7 @@ function Home() {
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -288,16 +314,17 @@ function Home() {
       {/* Tech */}
       <section className="section-y">
         <div className="container-page">
-          <SectionTitle eyebrow="Stack" title={t.home.tech_title} subtitle={t.home.tech_sub} />
+          <Reveal>
+            <SectionTitle eyebrow="Stack" title={t.home.tech_title} subtitle={t.home.tech_sub} />
+          </Reveal>
           <div className="mt-12 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {TECHS.map(({ name, Icon }) => (
-              <span
-                key={name}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-card border border-border text-sm font-medium text-primary shadow-sm hover:border-accent hover:text-accent transition-colors"
-              >
-                <Icon size={16} className="text-accent" aria-hidden />
-                {name}
-              </span>
+            {TECHS.map(({ name, Icon }, i) => (
+              <Reveal key={name} delay={i * 50} y={14}>
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-card border border-border text-sm font-medium text-primary shadow-sm hover:border-accent hover:text-accent transition-colors">
+                  <Icon size={16} className="text-accent" aria-hidden />
+                  {name}
+                </span>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -306,26 +333,29 @@ function Home() {
       {/* Models preview */}
       <section className="section-y bg-primary text-primary-foreground">
         <div className="container-page">
-          <SectionTitle eyebrow="Collaboration" title={t.home.models_title} subtitle={t.home.models_sub} light />
+          <Reveal>
+            <SectionTitle eyebrow="Collaboration" title={t.home.models_title} subtitle={t.home.models_sub} light />
+          </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {t.collab.list.map((m, i) => {
               const Icon = MODEL_ICONS[i];
               return (
-                <Link
-                  key={m.t}
-                  to="/$lang/collaboration"
-                  params={{ lang } as any}
-                  className="group p-6 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:border-white/25 transition-all"
-                >
-                  <div className="h-10 w-10 rounded-md bg-white/10 grid place-items-center mb-4 text-white">
-                    <Icon size={18} />
-                  </div>
-                  <h3 className="font-semibold text-white mb-2">{m.t}</h3>
-                  <p className="text-sm text-white/70 line-clamp-3 leading-relaxed">{m.d}</p>
-                  <div className="mt-4 text-xs text-accent-foreground/80 inline-flex items-center gap-1 font-semibold">
-                    {t.cta.discuss} <ChevronRight size={14} />
-                  </div>
-                </Link>
+                <Reveal key={m.t} delay={i * 90}>
+                  <Link
+                    to="/$lang/collaboration"
+                    params={{ lang } as any}
+                    className="group p-6 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:border-white/25 transition-all block h-full"
+                  >
+                    <div className="h-10 w-10 rounded-md bg-white/10 grid place-items-center mb-4 text-white">
+                      <Icon size={18} />
+                    </div>
+                    <h3 className="font-semibold text-white mb-2">{m.t}</h3>
+                    <p className="text-sm text-white/70 line-clamp-3 leading-relaxed">{m.d}</p>
+                    <div className="mt-4 text-xs text-accent-foreground/80 inline-flex items-center gap-1 font-semibold">
+                      {t.cta.discuss} <ChevronRight size={14} />
+                    </div>
+                  </Link>
+                </Reveal>
               );
             })}
           </div>
@@ -335,13 +365,17 @@ function Home() {
       {/* Stats */}
       <section className="section-y bg-secondary/40">
         <div className="container-page">
-          <SectionTitle eyebrow="Performance" title={t.home.stats_title} />
+          <Reveal>
+            <SectionTitle eyebrow="Performance" title={t.home.stats_title} />
+          </Reveal>
           <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.home.stats.map((s) => (
-              <div key={s.l} className="text-center p-8 rounded-xl bg-card border border-border">
-                <div className="text-5xl font-semibold text-accent">{s.v}</div>
-                <div className="mt-2 text-sm text-muted-foreground uppercase tracking-wider">{s.l}</div>
-              </div>
+            {t.home.stats.map((s, i) => (
+              <Reveal key={s.l} delay={i * 100}>
+                <div className="text-center p-8 rounded-xl bg-card border border-border">
+                  <div className="text-5xl font-semibold text-accent">{s.v}</div>
+                  <div className="mt-2 text-sm text-muted-foreground uppercase tracking-wider">{s.l}</div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -350,26 +384,29 @@ function Home() {
       {/* Clients */}
       <section className="section-y">
         <div className="container-page">
-          <SectionTitle
-            eyebrow={lang === "fr" ? "Clients" : "Clients"}
-            title={t.home.clients_title}
-            subtitle={t.home.clients_sub}
-          />
+          <Reveal>
+            <SectionTitle
+              eyebrow={lang === "fr" ? "Clients" : "Clients"}
+              title={t.home.clients_title}
+              subtitle={t.home.clients_sub}
+            />
+          </Reveal>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden border border-border">
-            {CLIENT_LOGOS.map((c) => (
-              <div
-                key={c.name}
-                title={c.name}
-                className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center px-4 py-10"
-              >
-                <span
-                  className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)] [&>svg]:h-10 [&>svg]:w-10"
-                  style={{ ["--brand" as any]: c.color }}
-                  aria-label={c.name}
+            {CLIENT_LOGOS.map((c, i) => (
+              <Reveal key={c.name} delay={i * 60} y={16}>
+                <div
+                  title={c.name}
+                  className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center px-4 py-10 h-full"
                 >
-                  {c.mark}
-                </span>
-              </div>
+                  <span
+                    className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)] [&>svg]:h-10 [&>svg]:w-10"
+                    style={{ ["--brand" as any]: c.color }}
+                    aria-label={c.name}
+                  >
+                    {c.mark}
+                  </span>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -378,14 +415,18 @@ function Home() {
       {/* Testimonials */}
       <section className="section-y">
         <div className="container-page">
-          <SectionTitle eyebrow="Témoignages" title={t.home.testi_title} />
+          <Reveal>
+            <SectionTitle eyebrow="Témoignages" title={t.home.testi_title} />
+          </Reveal>
           <div className="mt-14 grid md:grid-cols-3 gap-6">
-            {t.home.testimonials.map((ti) => (
-              <figure key={ti.q} className="p-7 rounded-xl bg-card border border-border relative">
-                <Quote className="absolute top-5 right-5 text-accent/15" size={36} />
-                <blockquote className="text-base text-primary leading-relaxed">{ti.q}</blockquote>
-                <figcaption className="mt-5 text-sm text-muted-foreground border-t border-border pt-4">{ti.a}</figcaption>
-              </figure>
+            {t.home.testimonials.map((ti, i) => (
+              <Reveal key={ti.q} delay={i * 120}>
+                <figure className="p-7 rounded-xl bg-card border border-border relative h-full">
+                  <Quote className="absolute top-5 right-5 text-accent/15" size={36} />
+                  <blockquote className="text-base text-primary leading-relaxed">{ti.q}</blockquote>
+                  <figcaption className="mt-5 text-sm text-muted-foreground border-t border-border pt-4">{ti.a}</figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -394,13 +435,13 @@ function Home() {
       {/* Team */}
       <section className="section-y bg-secondary/40">
         <div className="container-page">
-          <SectionTitle eyebrow={lang === "fr" ? "Équipe" : "Team"} title={t.home.team_title} subtitle={t.home.team_sub} />
+          <Reveal>
+            <SectionTitle eyebrow={lang === "fr" ? "Équipe" : "Team"} title={t.home.team_title} subtitle={t.home.team_sub} />
+          </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.home.team.map((m, i) => (
-              <div
-                key={m.n}
-                className="group rounded-xl overflow-hidden bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all"
-              >
+              <Reveal key={m.n} delay={i * 90}>
+                <div className="group rounded-xl overflow-hidden bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all h-full">
                 <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
                   <img
                     src={TEAM_PORTRAITS[i]}
@@ -424,7 +465,8 @@ function Home() {
                   <div className="text-xs uppercase tracking-wider text-accent mt-1 font-semibold">{m.r}</div>
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{m.b}</p>
                 </div>
-              </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -433,7 +475,7 @@ function Home() {
       {/* Final CTA */}
       <section className="section-y">
         <div className="container-page">
-          <div className="rounded-2xl hero-gradient text-white px-8 md:px-16 py-16 text-center shadow-elegant relative overflow-hidden">
+          <Reveal className="rounded-2xl hero-gradient text-white px-8 md:px-16 py-16 text-center shadow-elegant relative overflow-hidden block">
             <h2 className="text-3xl md:text-4xl font-semibold text-balance max-w-3xl mx-auto">{t.home.final_cta_title}</h2>
             <p className="mt-4 text-white/75 max-w-2xl mx-auto">{t.home.final_cta_sub}</p>
             <div className="mt-8">
@@ -443,7 +485,7 @@ function Home() {
                 </Button>
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>
