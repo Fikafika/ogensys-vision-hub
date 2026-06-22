@@ -31,6 +31,7 @@ import teamHery from "@/assets/team-hery.jpg";
 import teamClaire from "@/assets/team-claire.jpg";
 import teamYann from "@/assets/team-yann.jpg";
 import expertiseIllustration from "@/assets/expertise-illustration.jpg";
+import expertiseCollaboration from "@/assets/expertise-collaboration.jpg";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
@@ -243,44 +244,40 @@ function Home() {
       <section className="section-y bg-secondary/40">
         <div className="container-page">
           <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
-          <div className="mt-14 grid lg:grid-cols-12 gap-12 items-stretch">
-            {/* Left column: List of expertises */}
-            <div className="lg:col-span-7 flex flex-col gap-4">
+          <div className="mt-12 grid lg:grid-cols-12 gap-10 items-center">
+            {/* Left column: compact list */}
+            <ul className="lg:col-span-7 divide-y divide-border rounded-xl border border-border bg-card overflow-hidden">
               {t.expertises.list.map((e, i) => {
                 const Icon = EXP_ICONS[i] || Boxes;
                 return (
-                  <Link
-                    key={e.t}
-                    to="/$lang/expertises"
-                    params={{ lang } as any}
-                    className="group flex items-start gap-5 p-5 rounded-xl bg-card border border-border hover:border-accent hover:shadow-card transition-all"
-                  >
-                    <div className="h-10 w-10 shrink-0 rounded-md bg-accent/10 text-accent grid place-items-center mt-0.5 group-hover:bg-accent group-hover:text-white transition-colors">
-                      <Icon size={18} />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-primary group-hover:text-accent transition-colors truncate text-base">{e.t}</h3>
-                        <ChevronRight size={14} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                  <li key={e.t}>
+                    <Link
+                      to="/$lang/expertises"
+                      params={{ lang } as any}
+                      className="group flex items-center gap-4 px-5 py-4 hover:bg-secondary/40 transition-colors"
+                    >
+                      <div className="h-9 w-9 shrink-0 rounded-md bg-accent/10 text-accent grid place-items-center group-hover:bg-accent group-hover:text-white transition-colors">
+                        <Icon size={16} />
                       </div>
-                      <p className="text-sm text-muted-foreground mt-1 line-clamp-2 leading-relaxed">{e.d}</p>
-                    </div>
-                  </Link>
+                      <h3 className="flex-1 font-medium text-primary group-hover:text-accent transition-colors text-[15px] truncate">{e.t}</h3>
+                      <ChevronRight size={16} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0" />
+                    </Link>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
 
-            {/* Right column: Image illustration */}
-            <div className="lg:col-span-5 flex items-center justify-center">
-              <div className="relative w-full h-full min-h-[300px] lg:min-h-0 rounded-2xl overflow-hidden border border-border bg-card shadow-elegant group">
+            {/* Right column: collaboration image */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-elegant group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent mix-blend-overlay z-10" />
                 <img
-                  src={expertiseIllustration}
-                  alt={lang === "fr" ? "Domaines d'expertise d'Ogensys" : "Ogensys areas of expertise"}
+                  src={expertiseCollaboration}
+                  alt={lang === "fr" ? "Équipe en collaboration" : "Team collaborating"}
                   loading="lazy"
                   width={1024}
                   height={1024}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -362,19 +359,15 @@ function Home() {
             {CLIENT_LOGOS.map((c) => (
               <div
                 key={c.name}
-                className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center gap-3 px-4 py-10"
+                title={c.name}
+                className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center px-4 py-10"
               >
                 <span
-                  className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)]"
+                  className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)] [&>svg]:h-10 [&>svg]:w-10"
                   style={{ ["--brand" as any]: c.color }}
-                  aria-hidden
+                  aria-label={c.name}
                 >
                   {c.mark}
-                </span>
-                <span
-                  className="text-sm font-semibold tracking-wide uppercase text-muted-foreground transition-colors duration-300 group-hover:text-primary"
-                >
-                  {c.name}
                 </span>
               </div>
             ))}
