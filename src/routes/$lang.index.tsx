@@ -32,6 +32,8 @@ import teamClaire from "@/assets/team-claire.jpg";
 import teamYann from "@/assets/team-yann.jpg";
 import expertiseIllustration from "@/assets/expertise-illustration.jpg";
 import expertiseCollaboration from "@/assets/expertise-collaboration.jpg";
+import { Reveal } from "@/components/site/Reveal";
+import { HeroConstellation } from "@/components/site/HeroConstellation";
 
 export const Route = createFileRoute("/$lang/")({
   head: ({ params }) => {
