@@ -242,18 +242,22 @@ function Home() {
       {/* Why */}
       <section className="section-y">
         <div className="container-page">
-          <SectionTitle eyebrow="Ogensys" title={t.home.why_title} subtitle={t.home.why_sub} />
+          <Reveal>
+            <SectionTitle eyebrow="Ogensys" title={t.home.why_title} subtitle={t.home.why_sub} />
+          </Reveal>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.home.pillars.map((p, i) => {
               const Icon = PILLAR_ICONS[i];
               return (
-                <div key={p.title} className="group p-7 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all">
-                  <div className="h-11 w-11 rounded-md bg-primary/5 text-accent grid place-items-center mb-5 group-hover:bg-accent group-hover:text-white transition-colors">
-                    <Icon size={20} />
+                <Reveal key={p.title} delay={i * 90}>
+                  <div className="group p-7 rounded-xl bg-card border border-border hover:border-accent/40 hover:shadow-card transition-all h-full">
+                    <div className="h-11 w-11 rounded-md bg-primary/5 text-accent grid place-items-center mb-5 group-hover:bg-accent group-hover:text-white transition-colors">
+                      <Icon size={20} />
+                    </div>
+                    <h3 className="font-semibold text-primary text-lg mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
-                  <h3 className="font-semibold text-primary text-lg mb-2">{p.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                </div>
+                </Reveal>
               );
             })}
           </div>
@@ -263,10 +267,12 @@ function Home() {
       {/* Expertises preview */}
       <section className="section-y bg-secondary/40">
         <div className="container-page">
-          <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
+          <Reveal>
+            <SectionTitle eyebrow="Expertise" title={t.home.expertises_title} subtitle={t.home.expertises_sub} />
+          </Reveal>
           <div className="mt-12 grid lg:grid-cols-12 gap-10 items-center">
             {/* Left column: compact list */}
-            <ul className="lg:col-span-7 divide-y divide-border rounded-xl border border-border bg-card overflow-hidden">
+            <Reveal as="ul" className="lg:col-span-7 divide-y divide-border rounded-xl border border-border bg-card overflow-hidden">
               {t.expertises.list.map((e, i) => {
                 const Icon = EXP_ICONS[i] || Boxes;
                 return (
@@ -285,10 +291,10 @@ function Home() {
                   </li>
                 );
               })}
-            </ul>
+            </Reveal>
 
             {/* Right column: collaboration image */}
-            <div className="lg:col-span-5">
+            <Reveal className="lg:col-span-5" delay={150}>
               <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-elegant group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent mix-blend-overlay z-10" />
                 <img
@@ -300,7 +306,7 @@ function Home() {
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
