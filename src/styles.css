@@ -238,3 +238,67 @@
 @utility delay-300 { animation-delay: 0.3s; }
 @utility delay-400 { animation-delay: 0.4s; }
 @utility delay-500 { animation-delay: 0.5s; }
+
+/* Hero constellation animations */
+.hc-line {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: hcDraw 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    hcLineFlicker 6s ease-in-out 2.5s infinite;
+}
+@keyframes hcDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes hcLineFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.hc-node {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hcNodeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes hcNodeIn {
+  from { opacity: 0; transform: scale(0.2); }
+  to { opacity: 1; transform: scale(1); }
+}
+.hc-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hcHalo 3.2s ease-in-out infinite;
+}
+@keyframes hcHalo {
+  0%, 100% { transform: scale(1); opacity: 0.18; }
+  50% { transform: scale(1.8); opacity: 0; }
+}
+.hc-pulse-bg {
+  transform-origin: center;
+  animation: hcBgPulse 7s ease-in-out infinite;
+}
+@keyframes hcBgPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.75; }
+}
+
+/* Typewriter caret */
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  vertical-align: -2px;
+  margin-left: 2px;
+  background: currentColor;
+  animation: caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-line, .hc-node, .hc-halo, .hc-pulse-bg, .caret::after,
+  .blob, .float-slow, .shimmer-text {
+    animation: none !important;
+  }
+}
