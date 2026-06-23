@@ -17,7 +17,7 @@ export const Route = createFileRoute("/$lang/expertises")({
   component: ExpertisesPage,
 });
 
-const ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrench];
+const ICONS = [Compass, Boxes, Code2, Smartphone, BarChart3, Wrench];
 
 function ExpertisesPage() {
   const lang = useLang();
