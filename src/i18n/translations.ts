@@ -327,14 +327,13 @@ export const translations = {
     },
     expertises: {
       title: "Our expertise",
-      sub: "Seven areas of competence covering the full digital value chain.",
+      sub: "Six areas of competence covering the full digital value chain.",
       benefits: "Benefits",
       tech: "Technologies",
       list: [
         { t: "Digital transformation", d: "We support executive teams and CIOs in modernizing their information systems: assessment, master plan, change management and cloud roadmap.", b: ["Strategy aligned with business", "Lower technical debt", "Faster time-to-market"], k: ["IT strategy", "Master plan", "Cloud", "Change management"] },
         { t: "Development outsourcing", d: "Outsource part or all of your developments to qualified offshore teams: T&M, fixed-price or dedicated team.", b: ["Controlled costs", "Scalable delivery capacity", "French-speaking governance"], k: ["T&M", "Fixed-price", "Dedicated team", "Nearshore / Offshore"] },
         { t: "Business software & web applications", d: "Tailor-made design and development of robust, secure and scalable business web applications.", b: ["100% aligned with your processes", "Modern, durable architecture", "Professional UX"], k: ["Java", "PHP", ".Net", "React", "Vue", "Angular"] },
-        { t: "Odoo integration & development", d: "Implementation, configuration and custom module development on Odoo (formerly OpenERP): sales, procurement, inventory, HR, accounting.", b: ["Unified, fully customized ERP", "Optimized total cost of ownership", "Functional scalability"], k: ["Odoo Community", "Odoo Enterprise", "Custom modules", "Migration"] },
         { t: "Mobile applications", d: "Design and development of native and cross-platform mobile apps for employees or end-users.", b: ["Premium user experience", "Shorter time-to-market", "Shared cost on cross-platform"], k: ["Android", "iOS", "React Native", "Flutter"] },
         { t: "Systems integration, ERP & Business Intelligence", d: "Application integration, ERP design and decision-making dashboards to steer your business.", b: ["Data-driven decisions", "Consolidated 360° view", "Automated reporting"], k: ["Power BI", "Tableau", "ETL", "API & Middleware"] },
         { t: "IT system maintenance", d: "Application maintenance (AMS), support, hosting management and continuous evolution of your critical applications.", b: ["SLA-backed availability", "Optimized run costs", "Continuous evolution"], k: ["AMS", "L2/L3 support", "Managed services", "DevOps"] },
