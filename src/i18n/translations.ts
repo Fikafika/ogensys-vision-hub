@@ -94,7 +94,7 @@ export const translations = {
     },
     expertises: {
       title: "Nos expertises",
-      sub: "Sept domaines de compétence pour couvrir l'ensemble de votre chaîne de valeur numérique.",
+      sub: "Six domaines de compétence pour couvrir l'ensemble de votre chaîne de valeur numérique.",
       benefits: "Bénéfices",
       tech: "Technologies",
       list: [
