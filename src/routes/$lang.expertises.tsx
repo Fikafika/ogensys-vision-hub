@@ -8,8 +8,8 @@ export const Route = createFileRoute("/$lang/expertises")({
     meta: [
       { title: params.lang === "fr" ? "Nos expertises — Ogensys" : "Our expertise — Ogensys" },
       { name: "description", content: params.lang === "fr"
-        ? "Transformation digitale, développement web, mobile, Odoo, ERP, BI, maintenance. Sept domaines de compétence Ogensys."
-        : "Digital transformation, web & mobile development, Odoo, ERP, BI, maintenance. Seven Ogensys areas of expertise." },
+        ? "Transformation digitale, développement web, mobile, ERP, BI, maintenance. Six domaines de compétence Ogensys."
+        : "Digital transformation, web & mobile development, ERP, BI, maintenance. Six Ogensys areas of expertise." },
       { property: "og:url", content: `/${params.lang}/expertises` },
     ],
     links: [{ rel: "canonical", href: `/${params.lang}/expertises` }],
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/$lang/expertises")({
   component: ExpertisesPage,
 });
 
-const ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrench];
+const ICONS = [Compass, Boxes, Code2, Smartphone, BarChart3, Wrench];
 
 function ExpertisesPage() {
   const lang = useLang();

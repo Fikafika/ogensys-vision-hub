@@ -56,7 +56,7 @@ export const Route = createFileRoute("/$lang/")({
 });
 
 const PILLAR_ICONS = [Compass, Wallet, Users, ShieldCheck];
-const EXP_ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrench];
+const EXP_ICONS = [Compass, Boxes, Code2, Smartphone, BarChart3, Wrench];
 const MODEL_ICONS = [Globe2, ShieldCheck, Users, Wrench];
 
 const TECHS: { name: string; Icon: typeof Code2 }[] = [
@@ -208,31 +208,6 @@ function Home() {
               <div className="absolute -inset-6 bg-accent/20 rounded-3xl blur-2xl float-slow" aria-hidden />
               <div className="relative aspect-square">
                 <HeroConstellation />
-              </div>
-              <div className="relative -mt-6 rounded-xl border border-white/10 bg-[#0b1224]/70 backdrop-blur px-4 py-3 shadow-elegant font-mono text-[12px] text-white/80 float-slow">
-                <div className="flex items-center gap-1.5 mb-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
-                </div>
-                <div className="text-white/50">// ogensys.io — build</div>
-                <div>
-                  <span className="text-sky-300">const</span>{" "}
-                  <span className="text-white">project</span> ={" "}
-                  <span className="text-emerald-300">await</span>{" "}
-                  <span className="text-amber-200">deliver</span>(
-                </div>
-                <div className="pl-3">
-                  {"{ "}
-                  <span className="text-emerald-300">scope</span>:{" "}
-                  <span className="text-amber-200">"sur-mesure"</span>,{" "}
-                  <span className="text-emerald-300">delay</span>:{" "}
-                  <span className="text-amber-200">"&lt; 90j"</span>
-                  {" }"}
-                </div>
-                <div>
-                  ); <span className="caret" aria-hidden />
-                </div>
               </div>
             </div>
           </div>
