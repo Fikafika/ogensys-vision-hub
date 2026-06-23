@@ -56,7 +56,7 @@ export const Route = createFileRoute("/$lang/")({
 });
 
 const PILLAR_ICONS = [Compass, Wallet, Users, ShieldCheck];
-const EXP_ICONS = [Compass, Boxes, Code2, Database, Smartphone, BarChart3, Wrench];
+const EXP_ICONS = [Compass, Boxes, Code2, Smartphone, BarChart3, Wrench];
 const MODEL_ICONS = [Globe2, ShieldCheck, Users, Wrench];
 
 const TECHS: { name: string; Icon: typeof Code2 }[] = [
