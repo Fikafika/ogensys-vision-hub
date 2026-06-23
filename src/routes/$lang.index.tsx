@@ -25,6 +25,9 @@ import {
   Package,
   Apple,
   Hash,
+  Globe,
+  ShoppingBag,
+  Music,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
