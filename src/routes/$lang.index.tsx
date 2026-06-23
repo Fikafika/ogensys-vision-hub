@@ -25,6 +25,9 @@ import {
   Package,
   Apple,
   Hash,
+  Globe,
+  ShoppingBag,
+  Music,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
@@ -71,6 +74,9 @@ const TECHS: { name: string; Icon: typeof Code2 }[] = [
   { name: "iOS", Icon: Apple },
   { name: "ERP", Icon: Boxes },
   { name: "Business Intelligence", Icon: BarChart3 },
+  { name: "WordPress", Icon: Globe },
+  { name: "Prestashop", Icon: ShoppingBag },
+  { name: "Spotify", Icon: Music },
 ];
 
 const TEAM_PORTRAITS = [teamAmine, teamHery, teamClaire, teamYann];
