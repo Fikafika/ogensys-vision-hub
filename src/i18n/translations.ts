@@ -117,12 +117,6 @@ export const translations = {
           k: ["Java", "PHP", ".Net", "React", "Vue", "Angular"],
         },
         {
-          t: "Intégration et développement Odoo",
-          d: "Implémentation, paramétrage et développement de modules métier sur Odoo (ex-OpenERP) : ventes, achats, stocks, RH, comptabilité.",
-          b: ["ERP unifié et 100 % personnalisé", "Coût total de possession optimisé", "Évolutivité fonctionnelle"],
-          k: ["Odoo Community", "Odoo Enterprise", "Modules sur mesure", "Migration"],
-        },
-        {
           t: "Applications mobiles",
           d: "Conception et développement d'applications mobiles natives et cross-platform à destination des collaborateurs ou du grand public.",
           b: ["Expérience utilisateur premium", "Time-to-market raccourci", "Coûts mutualisés en cross-platform"],
