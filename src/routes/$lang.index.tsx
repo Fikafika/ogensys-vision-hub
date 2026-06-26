@@ -372,12 +372,12 @@ function Home() {
               subtitle={t.home.clients_sub}
             />
           </Reveal>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden border border-border">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
             {CLIENT_LOGOS.map((c, i) => (
               <Reveal key={c.name} delay={i * 60} y={16}>
                 <div
                   title={c.name}
-                  className="group bg-card hover:bg-secondary/40 transition-colors flex items-center justify-center px-4 py-10 h-full"
+                  className="group flex items-center justify-center px-4 py-6 h-full"
                 >
                   <span
                     className="text-muted-foreground transition-colors duration-300 group-hover:[color:var(--brand)] [&>svg]:h-10 [&>svg]:w-10"
@@ -394,7 +394,7 @@ function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-y">
+      {/* <section className="section-y">
         <div className="container-page">
           <Reveal>
             <SectionTitle eyebrow="Témoignages" title={t.home.testi_title} />
@@ -411,7 +411,7 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team */}
       <section className="section-y bg-secondary/40">
