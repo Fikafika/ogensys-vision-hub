@@ -394,7 +394,7 @@ function Home() {
       </section>
 
       {/* Testimonials */}
-      {/* <section className="section-y">
+      <section className="section-y">
         <div className="container-page">
           <Reveal>
             <SectionTitle eyebrow="Témoignages" title={t.home.testi_title} />
@@ -411,10 +411,10 @@ function Home() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Team */}
-      <section className="section-y bg-secondary/40">
+      {/* <section className="section-y bg-secondary/40">
         <div className="container-page">
           <Reveal>
             <SectionTitle eyebrow={lang === "fr" ? "Équipe" : "Team"} title={t.home.team_title} subtitle={t.home.team_sub} />
@@ -451,7 +451,7 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Final CTA */}
       <section className="section-y">
