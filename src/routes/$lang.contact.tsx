@@ -142,7 +142,7 @@ function ContactPage() {
               <h3 className="text-lg font-semibold mb-4">{t.contact.coordinates}</h3>
               <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-3"><Mail size={16} className="mt-0.5" /> contact@ogensys.com</li>
-                <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5" /> +33 1 23 45 67 89</li>
+                <li className="flex items-start gap-3"><Phone size={16} className="mt-0.5" /> +(418) 261 2028 +1 (581) 922 3028</li>
                 <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5" /> {t.contact.address}</li>
                 <li className="flex items-start gap-3"><Linkedin size={16} className="mt-0.5" /> <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-white underline-offset-2 hover:underline">linkedin.com/company/ogensys</a></li>
               </ul>
