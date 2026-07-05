@@ -171,7 +171,7 @@ export const translations = {
     work: {
       title: "Réalisations & références",
       sub: "Quelques projets significatifs livrés pour nos clients européens et africains.",
-      filters: { all: "Tous", digital: "Transformation digitale", web: "Web", mobile: "Mobile", erp: "ERP / Odoo", bi: "BI" },
+      filters: { all: "Tous", digital: "Transformation digitale", web: "Web", mobile: "Mobile", erp: "ERP", bi: "BI" },
       sector: "Secteur",
       result: "Résultat",
       tech: "Technologies",
@@ -354,7 +354,7 @@ export const translations = {
     work: {
       title: "Case studies & references",
       sub: "A few significant projects delivered for our European and African clients.",
-      filters: { all: "All", digital: "Digital transformation", web: "Web", mobile: "Mobile", erp: "ERP / Odoo", bi: "BI" },
+      filters: { all: "All", digital: "Digital transformation", web: "Web", mobile: "Mobile", erp: "ERP", bi: "BI" },
       sector: "Sector",
       result: "Outcome",
       tech: "Technologies",
