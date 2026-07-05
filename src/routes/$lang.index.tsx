@@ -27,7 +27,7 @@ import {
   Hash,
   Globe,
   ShoppingBag,
-  Music,
+  Store,
 } from "lucide-react";
 import teamAmine from "@/assets/team-amine.jpg";
 import teamHery from "@/assets/team-hery.jpg";
@@ -76,7 +76,7 @@ const TECHS: { name: string; Icon: typeof Code2 }[] = [
   { name: "Business Intelligence", Icon: BarChart3 },
   { name: "WordPress", Icon: Globe },
   { name: "Prestashop", Icon: ShoppingBag },
-  { name: "Spotify", Icon: Music },
+  { name: "Shopify", Icon: Store },
 ];
 
 const TEAM_PORTRAITS = [teamAmine, teamHery, teamClaire, teamYann];

@@ -53,8 +53,8 @@ export function Footer() {
           </form>
           <div className="mt-6 space-y-2 text-sm text-white/70">
             <p className="flex items-center gap-2"><Mail size={14} /> contact@ogensys.com</p>
-            <p className="flex items-center gap-2"><Phone size={14} /> +33 1 23 45 67 89</p>
-            <p className="flex items-center gap-2"><MapPin size={14} /> Antananarivo · Paris</p>
+            <p className="flex items-center gap-2"><Phone size={14} /> +(418) 261 2028 +1 (581) 922 3028</p>
+            <p className="flex items-center gap-2"><MapPin size={14} /> 4702 rue saint george Lévis QC Canada</p>
           </div>
         </div>
       </div>
