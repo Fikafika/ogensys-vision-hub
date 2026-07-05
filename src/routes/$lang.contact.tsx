@@ -150,7 +150,7 @@ function ContactPage() {
             <div className="rounded-xl overflow-hidden border border-border h-64 bg-secondary">
               <iframe
                 title="Ogensys office"
-                src="https://www.openstreetmap.org/?mlat=46.785743&mlon=-71.193316#map=17/46.785743/-71.193316"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=46.78%2C-71.19%2C46.78%2C-71.19&layer=mapnik"
                 className="w-full h-full"
                 loading="lazy"
               />
