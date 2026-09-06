@@ -48,7 +48,7 @@ export function Footer() {
           <h4 className="text-sm font-semibold mb-4 text-white">{t.footer.news_t}</h4>
           <p className="text-sm text-white/70 mb-3">{t.footer.news_p}</p>
           <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-            <Input type="email" required placeholder="email@company.com" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+            <Input type="email" required placeholder="email@yourcompany.com" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
             <Button type="submit" className="bg-accent hover:bg-accent/90">{t.footer.news_btn}</Button>
           </form>
           <div className="mt-6 space-y-2 text-sm text-white/70">
