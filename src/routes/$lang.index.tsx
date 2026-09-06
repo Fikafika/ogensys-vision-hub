@@ -363,7 +363,7 @@ function Home() {
       </section>
 
       {/* Clients */}
-      <section className="section-y">
+      {/*<section className="section-y">
         <div className="container-page">
           <Reveal>
             <SectionTitle
@@ -391,7 +391,7 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Testimonials */}
       <section className="section-y">
