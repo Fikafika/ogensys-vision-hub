@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 
+const SITE_URL = "https://ogensys.com";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -81,20 +83,56 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Ogensys — La vision des systèmes" },
       { name: "description", content: "Cabinet de conseil en transformation digitale et développement offshore. Expertise technique, équipes dédiées, coûts maîtrisés." },
       { name: "author", content: "Ogensys" },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Ogensys" },
-      { property: "og:description", content: "La vision des systèmes." },
+      { property: "og:description", content: "Cabinet de conseil en transformation digitale et développement offshore. Expertise technique, équipes dédiées, coûts maîtrisés." },
       { property: "og:site_name", content: "Ogensys" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: `${SITE_URL}/fr` },
+      { property: "og:image", content: `${SITE_URL}/images/og-image-ogensys.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Ogensys - Conseil et développement offshore" },
+      { property: "og:locale", content: "fr_FR" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Ogensys" },
+      { name: "twitter:title", content: "Ogensys — Conseil & développement offshore" },
+      { name: "twitter:description", content: "Cabinet de conseil en transformation digitale et développement offshore." },
+      { name: "twitter:image", content: `${SITE_URL}/images/og-image-ogensys.jpg` },
     ],
     links: [
+      { rel: "canonical", href: `${SITE_URL}/fr` },
+      { rel: "alternate", hrefLang: "fr", href: `${SITE_URL}/fr` },
+      { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` },
+      { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/fr` },
+
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Ogensys",
+          description: "Cabinet de conseil en transformation digitale et développement offshore. Expertise technique, équipes dédiées, coûts maîtrisés.",
+          url: SITE_URL,
+          logo: `${SITE_URL}/images/logo.png`,
+          image: `${SITE_URL}/images/og-image-ogensys.jpg`,
+          sameAs: [
+            "https://www.linkedin.com/company/ogensys",
+            "https://twitter.com/Ogensys",
+          ],
+        }),
       },
     ],
   }),
@@ -106,7 +144,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
