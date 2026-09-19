@@ -6,6 +6,15 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Load server-only vars from .env (e.g. RESEND_API_KEY) into process.env for
+// local dev — Vite itself only exposes VITE_* vars. In production they come
+// from the host's secrets. Optional: skipped if .env doesn't exist.
+try {
+  process.loadEnvFile(".env");
+} catch {
+  // no .env file
+}
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).

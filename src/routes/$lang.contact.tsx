@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Linkedin, CheckCircle2, Clock } from "lucide-react";
 import { useState } from "react";
-import { z } from "zod";
+import { contactSchema, sendContactEmail } from "@/lib/api/contact.functions";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/$lang/contact")({
@@ -22,16 +22,6 @@ export const Route = createFileRoute("/$lang/contact")({
     links: [{ rel: "canonical", href: `/${params.lang}/contact` }],
   }),
   component: ContactPage,
-});
-
-const schema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.string().trim().email().max(255),
-  company: z.string().trim().min(1).max(150),
-  project: z.string().min(1),
-  model: z.string().min(1),
-  desc: z.string().trim().min(10).max(2000),
-  deadline: z.string().trim().max(120).optional(),
 });
 
 function ContactPage() {
@@ -53,15 +43,20 @@ function ContactPage() {
       desc: String(fd.get("desc") || ""),
       deadline: String(fd.get("deadline") || ""),
     };
-    const r = schema.safeParse(payload);
+    const r = contactSchema.safeParse(payload);
     if (!r.success) {
       toast.error(r.error.issues[0]?.message ?? "Invalid form");
       return;
     }
     setLoading(true);
-    await new Promise((res) => setTimeout(res, 700));
-    setLoading(false);
-    setSent(true);
+    try {
+      await sendContactEmail({ data: r.data });
+      setSent(true);
+    } catch {
+      toast.error(t.contact.send_error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
