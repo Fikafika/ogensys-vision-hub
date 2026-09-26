@@ -20,7 +20,7 @@ export function getServerConfig() {
   return {
     nodeEnv: process.env.NODE_ENV,
     resendApiKey: process.env.RESEND_API_KEY,
-    contactFrom: process.env.CONTACT_FROM ?? "Ogensys <onboarding@resend.dev>",
+    contactFrom: process.env.CONTACT_FROM ?? "Ogensys <contact@ogensys.ca>",
     contactTo: process.env.CONTACT_TO ?? "contact@ogensys.ca",
     // Add server-only values here, e.g.:
     //   databaseUrl: process.env.DATABASE_URL,
